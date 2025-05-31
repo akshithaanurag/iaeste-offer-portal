@@ -1,0 +1,375 @@
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY */
+body {
+  font-family: 'Segoe UI', 'Poppins', sans-serif;
+  background: #f3f6fa;
+  color: #2c3e50;
+  padding: 20px;
+}
+
+/* HEADER */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #003e74;
+  color: white;
+  padding: 18px 30px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.site-header h1 {
+  font-size: 24px;
+}
+
+.logout-btn {
+  background-color: #ff4d4f;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #e84141;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* LOGIN CARD */
+.card {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.login-card {
+  max-width: 400px;
+  margin: 80px auto;
+  text-align: center;
+}
+
+/* FORM ELEMENTS */
+input, select, textarea {
+  width: 100%;
+  padding: 14px 16px;
+  margin: 10px 0 25px;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  background: white;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #003e74;
+  outline: none;
+}
+
+input[type="file"] {
+  background-color: #f0f4fa;
+  border: 1.5px dashed #aaa;
+  padding: 14px;
+  font-style: italic;
+  cursor: pointer;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+}
+
+button {
+  padding: 12px 24px;
+  background-color: #003e74;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #002b52;
+}
+
+.back-button {
+  background: #7f8c8d;
+  margin-bottom: 20px;
+}
+
+.back-button:hover {
+  background: #636e72;
+}
+
+/* FORM GRID LAYOUT */
+.form-grid {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.tabs button {
+  background: #dfe9f4;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-weight: bold;
+  color: #003e74;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.tabs button:hover {
+  background-color: #cfdcec;
+}
+
+.tabs button.active {
+  background-color: #003e74;
+  color: white;
+  box-shadow: 0 3px 10px rgba(0, 62, 116, 0.2);
+}
+
+.tab-content {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
+  animation: fadeIn 0.4s ease-in;
+}
+
+/* OFFER GROUPS */
+.offer-group {
+  margin-top: 30px;
+}
+
+.offer-group h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 6px;
+  text-transform: uppercase;
+}
+
+/* OFFER DISPLAY */
+.offer-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.offer-card {
+  background: white;
+  flex: 1 1 280px;
+  padding: 22px;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.offer-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 62, 116, 0.1);
+}
+
+.offer-card strong {
+  display: block;
+  font-size: 17px;
+  margin-bottom: 8px;
+  color: #003e74;
+}
+
+.offer-card em {
+  color: #555;
+  font-style: normal;
+  font-size: 14px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* FILTER SECTION */
+.filter-section {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 30px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.filter-section:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 62, 116, 0.1);
+}
+
+.filter-section input,
+.filter-section select {
+  flex: 1 1 200px;
+}
+
+/* ADMIN OFFER LIST */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul li {
+  background: #fff;
+  margin-bottom: 14px;
+  padding: 16px 22px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul li button {
+  background-color: #e74c3c;
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 18px;
+}
+
+ul li button:hover {
+  background-color: #c0392b;
+}
+
+/* APPLY SECTION */
+#applySection {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+#applySection p {
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+#applySection a {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #003e74;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+#applySection a:hover {
+  text-decoration: underline;
+}
+
+.no-offers-msg {
+  margin-top: 30px;
+  text-align: center;
+  color: #888;
+  font-size: 16px;
+}
+
+/* NC Offer Links */
+#ncOfferLinks li {
+  margin-bottom: 12px;
+}
+
+#ncOfferLinks a {
+  color: #003e74;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+#ncOfferLinks a:hover {
+  text-decoration: underline;
+}
+
+/* Factsheet List */
+#winnerFactsList li {
+  margin: 10px 0;
+  padding: 12px;
+  background: #f5f8fc;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .offer-row {
+    flex-direction: column;
+  }
+
+  .filter-section {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .tabs {
+    flex-direction: column;
+  }
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.tab-content {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+  display: none;
+}
+
+.tab-content.active {
+  display: block !important;
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IAESTE Offer Portal</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Firebase App (core) -->
+  <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-app-compat.js"></script>
+
+  <!-- Firebase Firestore (Database) -->
+  <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore-compat.js"></script>
+
+  <!-- YOUR CONFIG HERE -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "YOUR-API-KEY",
+      authDomain: "YOUR-PROJECT.firebaseapp.com",
+      projectId: "YOUR-PROJECT-ID",
+      storageBucket: "YOUR-PROJECT.appspot.com",
+      messagingSenderId: "YOUR-SENDER-ID",
+      appId: "YOUR-APP-ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>IAESTE Offer Portal</h1>
+    <button id="logoutBtn" class="logout-btn" style="display:none;">Logout</button>
+  </header>
+
+  <!-- Login Page -->
+  <main id="loginPage" class="container centered">
+    <section class="card login-card">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <label for="userType">Select User Type:</label>
+        <select id="userType" required>
+          <option value="">-- Choose --</option>
+          <option value="member">Member</option>
+          <option value="lcAdmin">LC Admin</option>
+          <option value="ncAdmin">NC Admin</option>
+        </select>
+        <button type="submit" id="enterBtn">Enter</button>
+      </form>
+    </section>
+  </main>
+
+<!-- LC Admin Page -->
+<main id="adminPage" class="container" style="display:none;">
+  <nav class="tabs">
+    <button onclick="showAdminTab('lcPostTab')">Post Offer</button>
+    <button onclick="showAdminTab('viewNCTab')">NC Admin Offers</button>
+    <button onclick="showAdminTab('uploadFactTab')">Upload Winner Factsheet</button>
+    <button onclick="showAdminTab('lcApplications')">Offer Applications</button>
+  </nav>
+
+  <!-- Tab 1: Post Offer -->
+  <section id="lcPostTab" class="tab-content">
+  <h2>Post New Offer</h2>
+  <div class="form-grid">
+    <select id="offerType" onchange="toggleSubCategory()">
+      <option value="">-- Select Offer Type --</option>
+      <option value="Global">Global Offer</option>
+      <option value="Exchange">Exchange Offer</option>
+      <option value="Reserved">Reserved Offer</option>
+    </select>
+
+    <div id="subCategoryContainer" style="display:none;">
+      <select id="offerSubCategory"></select>
+    </div>
+
+    <textarea id="description" placeholder="Instructions"></textarea>
+    <input list="country-list" id="country" placeholder="Enter Country" />
+    <datalist id="country-list">
+      <option value="Germany">
+      <option value="USA">
+      <option value="Japan">
+      <option value="Brazil">
+      <option value="UAE">
+    </datalist>
+
+    <input type="text" id="departments" placeholder="Departments (comma separated or 'All')" />
+    <select id="mode">
+      <option value="">-- Select Mode --</option>
+      <option value="Conventional">Conventional</option>
+      <option value="Hybrid">Hybrid</option>
+      <option value="Remote">Remote</option>
+    </select>
+
+    <input type="datetime-local" id="deadline" />
+    <label>Upload Offer Form (PDF):</label>
+    <input type="file" id="offerPdf" accept=".pdf" />
+    <label>Upload Instructions File (PDF):</label>
+    <input type="file" id="instructionPdf" accept=".pdf" />
+
+    <button onclick="postOffer()">Post Offer</button>
+  </div>
+
+  <section>
+    <h3>Current Offers</h3>
+    <ul id="admin-offer-list"></ul>
+  </section>
+</section>
+
+
+  
+
+  <!-- Tab 2: View Offers from NC Admin -->
+  <section id="viewNCTab" class="tab-content" style="display:none;">
+    <h2>NC Admin Offers (Drive Links)</h2>
+    <ul id="ncOfferLinks"></ul>
+  </section>
+
+  <!-- Tab 3: Upload Factsheet -->
+  <section id="uploadFactTab" class="tab-content" style="display:none;">
+    <h2>Upload Winner Factsheet</h2>
+    <input type="text" id="winnerFactsheetTitle" placeholder="Enter the type of offer">
+    <input type="url" id="winnerFactsheetLink" placeholder="Paste Google Drive Link">
+    <button onclick="uploadWinnerFactsheet()">Upload Link</button>
+  </section>
+
+  <!-- Tab 4: Applications from Members -->
+  <section id="lcApplications" class="tab-content" style="display:none;">
+    <h2>Offer Applications</h2>
+    <ul id="applicationList"></ul>
+  </section>
+</main>
+
+
+  <!-- Member Page -->
+  <main id="memberPage" class="container" style="display:none;">
+    <h2>Available Offers</h2>
+    <section class="filter-section">
+      <input list="country-list" id="filter-country" placeholder="Filter by Country" />
+      <select id="filter-mode">
+        <option value="">All Modes</option>
+        <option value="Conventional">Conventional</option>
+        <option value="Hybrid">Hybrid</option>
+        <option value="Remote">Remote</option>
+      </select>
+      <input type="text" id="filter-department" placeholder="Enter Your Department" />
+      <button onclick="applyFilters()">Apply Filters</button>
+    </section>
+
+    <!-- Offer Groups -->
+    <div class="offer-group">
+      <h3>Global Offers</h3>
+      <div id="global-cobe-offers" class="offer-row"></div>
+      <div id="global-fcfs-offers" class="offer-row"></div>
+    </div>
+
+    <div class="offer-group">
+      <h3>Exchange Offers</h3>
+      <div id="open-offers" class="offer-row"></div>
+      <div id="april-offers" class="offer-row"></div>
+      <div id="winter-offers" class="offer-row"></div>
+      <div id="autumn-offers" class="offer-row"></div>
+    </div>
+
+    <div class="offer-group">
+      <h3>Reserved Offers</h3>
+      <div id="reserved-offers" class="offer-row"></div>
+    </div>
+
+    <div id="no-offers" class="no-offers-msg" style="display:none;">
+      <p>No offers found matching your criteria.</p>
+    </div>
+  </main>
+
+  <!-- Apply Section -->
+  <main id="applySection" class="container" style="display:none;">
+    <button onclick="backToOffers()" class="back-button">← Back</button>
+    <h2>Apply for Offer</h2>
+
+    <p><strong>Offer Form:</strong></p>
+    <a id="adminFileLink1" href="#" target="_blank">Download Offer Form</a>
+
+    <p><strong>Instructions File:</strong></p>
+    <a id="adminFileLink2" href="#" target="_blank">Download Instructions</a>
+
+    <p><strong>Parent Undertaking Letter:</strong></p>
+    <a href="Parent Undertaking Letter.pdf" download>Download Parent Undertaking</a>
+    <input type="file" id="uploadUndertaking" accept=".pdf,.doc,.docx,.jpg" />
+
+    <p><strong>IAESTE Factsheet:</strong></p>
+    <a href="IAESTE Factsheet (1).docx" download>Download Factsheet</a>
+    <input type="file" id="uploadFactsheet" accept=".pdf,.doc,.docx,.jpg" />
+
+    <button onclick="submitApplication()">Submit Application</button>
+  </main>
+  <!-- NC Admin Page -->
+  <main id="ncAdminPage" class="container" style="display:none;">
+    <nav class="tabs">
+      <button onclick="showAdminTab('ncUploadTab')">Upload Offer Link</button>
+      <button onclick="showAdminTab('ncFactsTab')">View Winner Factsheets</button>
+    </nav>
+
+    <!-- NC Admin Upload Link Tab -->
+    <section id="ncUploadTab" class="tab-content">
+      <h2>Upload Offer Link</h2>
+      <select id="ncUploadType" onchange="updateTargetOptions()">
+        <option value="">-- Select Upload Type --</option>
+        <option value="Local Committees">Local Committees</option>
+        <option value="Cooperating Institutions">Cooperating Institutions</option>
+      </select>
+
+      <select id="ncTargetOrg">
+        <option value="">-- Select Committee/Institution --</option>
+        <option value="LC MU">LC MU</option>
+        <option value="LC MUJ">LC MUJ</option>
+        <option value="LC KU">LC KU</option>
+        <option value="LC JECRC">LC JECRC</option>
+        <option value="Sikkim Manipal University">Sikkim Manipal University</option>
+        <option value="Rajagiri Business School">Rajagiri Business School</option>
+      </select>
+
+      <input type="url" id="ncDriveLink" placeholder="Insert Drive Link">
+      <button onclick="uploadDriveLink()">Submit Link</button>
+
+      <div id="ncUploadSuccess" style="color:green; display:none;">✅ Link uploaded successfully</div>
+    </section>
+
+    <!-- NC Admin Factsheet Tab -->
+    <section id="ncFactsTab" class="tab-content" style="display:none;">
+      <h2>Winner Factsheets from LCs</h2>
+      <ul id="winnerFactsList">
+        <!-- Factsheets added via LC upload -->
+      </ul>
+    </section>
+  </main>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
