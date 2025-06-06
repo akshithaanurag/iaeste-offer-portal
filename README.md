@@ -69,5 +69,6 @@ This project is licensed under the [MIT License](https://choosealicense.com/lice
 
 ## ✍️ Author
 
-Developed by [Your Name]  
-[Your GitHub Profile Link]
+Developed by [AKSHITHA ANURAG]  
+[GitHub Profile Link][https://akshithaanurag.github.io/iaeste-offer-portal/]
+
