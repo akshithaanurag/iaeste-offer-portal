@@ -19,11 +19,14 @@ Tech Stack
 
 Project Structure
 .
-├── index.html        # Main HTML file
-├── style.css         # Custom CSS styles
-├── script.js         # JavaScript logic and interactivity
-├── screenshot.png    # Preview image of the portal
-├── readme.md
+├── index.html           # Main HTML file
+├── style.css            # Custom CSS styles
+├── script.js            # JavaScript logic
+├── README.md            # Project documentation
+├── screenshot-login.png         # Login screen preview
+├── screenshot-member.png        # Member portal preview
+├── screenshot-lc-admin.png      # LC Admin portal preview
+├── screenshot-nc-admin.png      # NC Admin portal preview
 
 
 Getting Started
