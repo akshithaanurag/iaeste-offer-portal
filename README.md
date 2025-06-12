@@ -1,74 +1,58 @@
-# 🌍 IAESTE Offer Portal
+Admin Offer Portal – IAESTE Internship Platform (Frontend Prototype)
 
-A web-based platform for managing internship and job offers within the IAESTE organization.  
-Built as a **frontend-only prototype** where admins (LC/NC) can upload offers and members can view and apply.
+A responsive, frontend-only web platform for managing internship and job offers within the IAESTE ecosystem.
+Admins (LC/NC) can post internship opportunities, and members can view and apply for them directly through the browser.
 
----
+Features
+   Role-based login for Member, LC Admin, and NC Admin
+   Add new internship offers with PDF uploads, deadlines, and related details
+   Members can apply for offers by uploading required documents
+   Filter offers by country, department, and mode (remote, hybrid, on-site)
+   NC Admins can upload and view Google Drive links for factsheets
+   Clean and organized user interface with tab-based navigation
+   Fully client-side; data is stored temporarily in the browser (non-persistent)
 
-## 🚀 Features
+Tech Stack
+   HTML5 for semantic structure
+   CSS3 for responsive design and animations
+   Vanilla JavaScript for dynamic interaction
 
-✅ Role-based login: Member, LC Admin, NC Admin  
-✅ Post new offers with files and deadlines  
-✅ Apply for offers by uploading documents  
-✅ Filter offers by country, department, and mode  
-✅ Upload & view Drive links (for NC)  
-✅ Organized tabs and clean UI  
-✅ All data handled in-browser (temporary, non-persistent)
-
----
-
-## 🛠️ Tech Stack
-
-- **HTML**  
-- **CSS** (Responsive, animated, styled)  
-- **JavaScript** (Vanilla, no framework)
-
----
-
-## 📂 Project Structure
+Project Structure
+.
+├── index.html        # Main HTML file
+├── style.css         # Custom CSS styles
+├── script.js         # JavaScript logic and interactivity
+├── screenshot.png    # Preview image of the portal
+├── readme.md
 
 
----
+Getting Started
+   Clone or download the repository
+   Open index.html in any modern web browser
+   Select your role and start using the portal:
+         LC Admin: Post offers and review applications
+         NC Admin: Manage factsheet Drive links and monitor activity
+         Member: View and apply to available internship offers
+   Note: All data is stored locally in the browser and will be cleared upon refresh. There is no backend integration at this stage.
 
-## 🎯 How to Use
 
-1. Clone or download the repository  
-2. Open `index.html` in a browser  
-3. Select your user type and start using the portal:
-   - **LC Admin:** Post offers and view applications
-   - **NC Admin:** Upload Drive links and view factsheets
-   - **Member:** Apply to posted offers with required documents
+Preview
+![Screenshot](https://github.com/user-attachments/assets/ac56618d-2403-4f80-a1f6-1e0362af394f)
 
-📌 _Note: All data is handled locally and is lost on refresh (no backend yet)._
+Future Enhancements
+   Backend integration using Firebase or Node.js
+   User authentication and secure login syste
+   Real-time tracking of applications
+   Email notifications for status updates
+   Database integration for persistent data storage
 
----
+License
+   This project is licensed under the MIT License
 
-## 🖼️ Preview Screenshot
+Author
+   Akshitha Anurag
+   GitHub Profile: https://akshithaanurag.github.io/iaeste-offer-portal/
 
-> Replace with your actual screenshot:
 
-![screenshot](./screenshot.png)
 
----
-
-## 📌 Future Scope
-
-- Backend integration (e.g., Firebase, Node.js)
-- User authentication and secure login
-- Real-time application tracking
-- Email notifications
-- Database for persistent offer storage
-
----
-
-## 📄 License
-
-This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/)
-
----
-
-## ✍️ Author
-
-Developed by [AKSHITHA ANURAG]  
-[GitHub Profile Link][https://akshithaanurag.github.io/iaeste-offer-portal/]
 
