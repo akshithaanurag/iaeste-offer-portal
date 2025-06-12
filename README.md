@@ -39,6 +39,13 @@ Getting Started
 Preview
 ![Screenshot](https://github.com/user-attachments/assets/ac56618d-2403-4f80-a1f6-1e0362af394f)
 
+![member screenshot ](https://github.com/user-attachments/assets/71261be9-e86c-456e-836d-28edd4b22081)
+
+![lc admin screenshot ](https://github.com/user-attachments/assets/618bca8a-322d-48a2-9575-20a3b021aeee)
+
+![nc admin screenshot ](https://github.com/user-attachments/assets/5cdba3d9-3bd3-495a-a4af-3d5781f605bd)
+
+
 Future Enhancements
    Backend integration using Firebase or Node.js
    User authentication and secure login syste
